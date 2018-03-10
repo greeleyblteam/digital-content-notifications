@@ -13,7 +13,83 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
-	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+<script>
+    var useragentid = null;
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(["init", {
+        appId: "345345-asdf-345",
+        autoRegister: false,
+        notifyButton: {
+            enable: false
+        },
+        persistNotification: false
+    }]);
+    //Firstly this will check user id
+    OneSignal.push(function() {
+        OneSignal.getUserId().then(function(userId) {
+            if(userId == null){
+                document.getElementById('unsubscribe').style.display = 'none';
+            }
+            else{
+                useragentid = userId;
+                document.getElementById('unsubscribe').style.display = '';
+                OneSignal.push(["getNotificationPermission", function(permission){
+                }]);
+                OneSignal.isPushNotificationsEnabled(function(isEnabled) {
+                    if (isEnabled){
+                        document.getElementById('unsubscribe').style.display = '';
+                        document.getElementById('subscribe').style.display = 'none';
+                    }
+                    else{
+                      document.getElementById('unsubscribe').style.display = 'none';
+                      document.getElementById('subscribe').style.display = '';
+                    }
+                });
+            }
+        });
+    });
+    //Secondly this will check when subscription changed
+    OneSignal.push(function() {
+        OneSignal.on('subscriptionChange', function (isSubscribed) {
+            if(isSubscribed==true){
+                OneSignal.getUserId().then(function(userId) {
+                    useragentid = userId;
+                }).then(function(){
+                 // this is custom function
+                // here you can send post request to php file as well.
+                    OneSignalUserSubscription(useragentid);
+                });
+                document.getElementById('unsubscribe').style.display = '';
+                document.getElementById('subscribe').style.display = 'none';
+            }
+            else if(isSubscribed==false){
+                OneSignal.getUserId().then(function(userId) {
+                    useragentid = userId;
+                });
+                document.getElementById('unsubscribe').style.display = 'none';
+                document.getElementById('subscribe').style.display = '';
+            }
+            else{
+                console.log('Unable to process the request');
+            }
+        });
+    });
+    function subscribeOneSignal(){
+        if(useragentid !=null){
+            OneSignal.setSubscription(true);
+        }
+        else{
+            OneSignal.registerForPushNotifications({
+                modalPrompt: true
+            });
+        }
+    }
+    function unSubscribeOneSignal(){
+        OneSignal.setSubscription(false);
+    }
+</script>
+	<!--<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 <script>
   var OneSignal = window.OneSignal || [];
   OneSignal.push(function() {
@@ -21,7 +97,7 @@
       appId: "b7fce104-e9ef-4da5-be70-892dbdaca8a8",
     });
   });
-</script>
+</script>-->
 <link rel="shortcut icon" href="images/favicon.ico">
 	<body>
 
@@ -74,7 +150,8 @@
 									<h2>Subscribe to Notifications</h2>
 									<p>You may also notice a red bell in the bottom right-hand corner. You can subscribe to our notifications by clicking here also!</p>
 									<ul class="actions">
-										<li><a href="#" class="button">Learn more</a></li>
+										<li><a href="#" class="button" onclick="subscribeOneSignal()">Subscribe</a></li>
+										<li><a href="#" class="button" onclick="unSubscribeOneSignal()">Unsubscribe</a></li>
 									</ul>
 								</div>
 							</div>
