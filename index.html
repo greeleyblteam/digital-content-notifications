@@ -74,7 +74,10 @@
 									<h2>Subscribe to Notifications</h2>
 									<p>You may also notice a red bell in the bottom right-hand corner. You can subscribe to our notifications by clicking here also!</p>
 									<ul class="actions">
-										<!--<li><a href="#" class="button">Learn more</a></li>-->
+										<li><button id="subscribe" class="button" onclick="subscribeOneSignal()">Subscribe </button>
+										<button id="unsubscribe" class="button" onclick="unSubscribeOneSignal()">Unsubscribe </button>
+										<a href="#" class="button">Learn more</a></li>
+
 									</ul>
 								</div>
 							</div>
@@ -287,11 +290,7 @@
 					<button id="subscribe" class="button" onclick="subscribeOneSignal()">Subscribe </button>
 					<button id="unsubscribe" class="button" onclick="unSubscribeOneSignal()">Unsubscribe </button>
 					</div>
-					<style>
-					.button {
-					    background-color: #008CBA;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;cursor: pointer;
-					}
-					</style>
+
 			</div>
 
 		<!-- Footer -->
