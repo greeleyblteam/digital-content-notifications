@@ -13,6 +13,8 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
+
+	<!--script for subscribe button on website-->
 	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
 <script>
     var useragentid = null;
@@ -25,7 +27,7 @@
         },
         persistNotification: false
     }]);
-    //Firstly this will check user id
+    //Checks user ID
     OneSignal.push(function() {
         OneSignal.getUserId().then(function(userId) {
             if(userId == null){
@@ -49,7 +51,7 @@
             }
         });
     });
-    //Secondly this will check when subscription changed
+    //Checks when subscription changed
     OneSignal.push(function() {
         OneSignal.on('subscriptionChange', function (isSubscribed) {
             if(isSubscribed==true){
@@ -89,6 +91,8 @@
         OneSignal.setSubscription(false);
     }
 </script>
+
+<!--script for OneSignal bell-->
 	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 <script>
   var OneSignal = window.OneSignal || [];
@@ -98,6 +102,8 @@
     });
   });
 </script>
+
+<!--website favicon-->
 <link rel="shortcut icon" href="images/favicon.ico">
 	<body>
 
@@ -109,7 +115,7 @@
 							<li><a href="#intro">Welcome</a></li>
 							<li><a href="#one">How</a></li>
 							<li><a href="#two">Supported Apps</a></li>
-							<li><a href="more.html">More</a></li>
+							<!--<li><a href="more.html">More</a></li>-->
 						</ul>
 					</nav>
 				</div>
