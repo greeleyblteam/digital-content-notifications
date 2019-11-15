@@ -5,6 +5,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
+	<head>
 		<title>WCSD6 Instructional Technology Notifications</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,6 +13,38 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
+		<script>
+				//some default pre init
+				var PB = PB || {};PB.q = PB.q || [];PB.events = PB.events || [];
+				
+				//********** Update these fields ********
+				//PushBots ApplicationId (required)
+				PB.app_id = "5dced3e8b794122ef5396fd2";
+				//Your domain name, must be HTTPS or localhost  (required)
+				PB.domain = "https://greeleyblteam.github.io";
+				//Update and uncomment it if you are using custom safari certificate for your app
+				//PB.safari_push_id = "web.com.pushbots.main";
+				//****************************************
+				
+				PB.logging_enabled = true;
+				PB.auto_subscribe = true;
+				
+				//Custom worker and manifest URL
+				//PB.worker_url = PB.domain + "/pushbots-worker.js";
+				//PB.manifest_url = PB.domain + "/pushbots-push-manifest.json";
+				
+				//Welcome notification message
+				PB.welcome = {title:"Welcome ",message:"Thanks for subscribing!", url :PB.domain};
+				
+				function sendNotification(){
+					  PB.register();
+					  PB.q.push(["sendNotification", {title:"Hey ",message:"Why not?", url :"https://greeleyblteam.github.io"}]);
+				}
+				
+				</script>
+				
+				<script src="//cdn.pushbots.com/js/sdk.min.js" type="text/javascript" onload="PB.init()" async></script>
 	</head>
 
 <!--website favicon-->
@@ -219,16 +252,6 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-
-			<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-			<script>
-			  var OneSignal = window.OneSignal || [];
-			  OneSignal.push(function() {
-				OneSignal.init({
-				  appId: "ecf0accc-c0cb-49d8-ba2d-4c1376e4d089",
-				});
-			  });
-			</script>
 
 	</body>
 </html>
