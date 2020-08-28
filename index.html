@@ -14,18 +14,6 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
-				<script type="application/javascript" src="https://sdki.truepush.com/sdk/v2.0.2/app.js" async></script>
-		<script>
-		var truepush = window.truepush || [];
-		truepush.push(function(){
-			truepush.Init({
-				id: "5f43d7b8e09626be8af1798a"
-				}, function(error){
-				  if(error) console.error(error);
-				})
-			})
-		</script>
-
 	</head>
 
 <!--website favicon-->
@@ -233,15 +221,17 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 
-			<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/7.4.0/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="/__/firebase/7.4.0/firebase-analytics.js"></script>
-
-<!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>
+			<script type="application/javascript" src="https://sdki.truepush.com/sdk/v2.0.2/app.js" async></script>
+			<script>
+			var truepush = window.truepush || [];
+			truepush.push(function(){
+				truepush.Init({
+					id: "5f43d7b8e09626be8af1798a"
+					}, function(error){
+					  if(error) console.error(error);
+					})
+				})
+			</script>
 
 	</body>
 </html>
