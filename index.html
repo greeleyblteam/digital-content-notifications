@@ -14,6 +14,35 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
+		<script>
+			//some default pre init
+			var PB = PB || {};PB.q = PB.q || [];PB.events = PB.events || [];
+			
+			//PushBots ApplicationId (required)
+			PB.app_id = "5f4c2a76b5e643562e5b3a73";
+			//Your domain name, must be HTTPS or localhost  (required)
+			PB.domain = "https://greeleyblteam.github.io";
+			//Update and uncomment it if you are using custom safari certificate for your app
+			PB.safari_push_id = "web.com.pushbots.safaripush";
+			//****************************************
+			
+			PB.logging_enabled = true;
+			PB.auto_subscribe = true;
+			
+			//Custom worker and manifest URL
+			//PB.worker_url = PB.domain + "/pushbots-worker.js";
+			
+			//Welcome notification message
+			PB.welcome = {title:"Welcome ",message:"Thanks for subscribing!", url :PB.domain};
+			
+			function sendNotification(){
+				  PB.register();
+				  PB.q.push(["sendNotification", {title:"Hey ",message:"Why not?", url :"https://greeleyblteam.github.io"}]);
+			}
+			
+			</script>
+			
+			<script src="//cdn.pushbots.com/js/sdk.min.js" type="text/javascript" onload="PB.init()" async></script>
 	</head>
 
 <!--website favicon-->
@@ -232,36 +261,6 @@
 					})
 				})
 			</script> -->
-
-			<script>
-				//some default pre init
-				var PB = PB || {};PB.q = PB.q || [];PB.events = PB.events || [];
-				
-				//PushBots ApplicationId (required)
-				PB.app_id = "5f43faf96804733bf31c90f3";
-				//Your domain name, must be HTTPS or localhost  (required)
-				PB.domain = "WEBSITE_URL";
-				//Update and uncomment it if you are using custom safari certificate for your app
-				PB.safari_push_id = "web.com.pushbots.safaripush";
-				//****************************************
-				
-				PB.logging_enabled = true;
-				PB.auto_subscribe = true;
-				
-				//Custom worker and manifest URL
-				//PB.worker_url = PB.domain + "/pushbots-worker.js";
-				
-				//Welcome notification message
-				PB.welcome = {title:"Welcome ",message:"Thanks for subscribing!", url :PB.domain};
-				
-				function sendNotification(){
-					  PB.register();
-					  PB.q.push(["sendNotification", {title:"Hey ",message:"Why not?", url :"WEBSITE_URL"}]);
-				}
-				
-				</script>
-				
-				<script src="//cdn.pushbots.com/js/sdk.min.js" type="text/javascript" onload="PB.init()" async></script>
 
 	</body>
 </html>
